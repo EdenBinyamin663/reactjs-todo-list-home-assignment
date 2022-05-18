@@ -1,8 +1,8 @@
 import './App.scss';
 import {useEffect} from 'react';
-import {TasksList} from './components/tasks-list/tasks-list';
+import {TodoList} from './components/todo-list/todo-list';
 import {useDispatch} from 'react-redux';
-import {getTodosAction} from './reducers/tasks.builder';
+import {getTodosAction} from './reducers/todo-list-reducer/todo-list.builder';
 
 export default function App() {
 
@@ -14,7 +14,7 @@ export default function App() {
 
     return (
         <div className='app-root'>
-            <TasksList/>
+            <TodoList/>
         </div>
     );
 }

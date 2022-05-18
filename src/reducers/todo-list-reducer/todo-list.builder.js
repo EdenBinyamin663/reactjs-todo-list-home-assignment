@@ -1,6 +1,6 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
-import {deleteTodo, getTodos, updateTodo} from '../api';
-import {arrayToDictionaryByKey} from '../utils/utils';
+import {deleteTodo, getTodos, updateTodo} from '../../api';
+import {arrayToDictionaryByKey} from '../../utils/utils';
 import {omit} from 'lodash';
 
 const TASKS = 'TASKS';
@@ -35,7 +35,7 @@ const handleUpdateTodoCases = (state, {meta: {arg: {task}}}) => {
     state.tasks[task.id].completed = !state.tasks[task.id].completed;
 }
 
-export const tasksBuilder = builder => {
+export const todoListBuilder = builder => {
     builder
         .addCase(updateTodoAction.pending, handleUpdateTodoCases)
         .addCase(updateTodoAction.rejected, handleUpdateTodoCases)
