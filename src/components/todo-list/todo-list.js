@@ -3,13 +3,18 @@ import {TaskCard} from '../task/task-card';
 import './todo-list.scss';
 import {useDispatch, useSelector} from 'react-redux';
 import {Spinner} from '../spinner/spinner';
-import {deleteTodoAction, updateTodoAction} from '../../reducers/todo-list-reducer/todo-list.builder';
+import {deleteTodoAction, getTodosAction, updateTodoAction} from '../../reducers/todo-list-reducer/todo-list.builder';
+import {useEffect} from 'react';
 
 export const TodoList = () => {
 
     const tasks = useSelector(state => state.tasks.tasks);
     const isLoading = useSelector(state => state.tasks.isLoading);
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getTodosAction());
+    }, [])
 
     const onTaskClick = (e, task) => {
         if (e.ctrlKey || e.metaKey) {
