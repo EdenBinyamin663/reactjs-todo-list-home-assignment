@@ -3,7 +3,7 @@ import {TaskCard} from '../task/task-card';
 import './todo-list.scss';
 import {useDispatch, useSelector} from 'react-redux';
 import {Spinner} from '../spinner/spinner';
-import {deleteTodoAction, getTodosAction, updateTodoAction} from '../../reducers/todo-list-reducer/todo-list.builder';
+import {deleteTodoAction, getTodoListAction, updateTodoAction} from '../../reducers/todo-list-reducer/todo-list.builder';
 import {useEffect} from 'react';
 
 export const TodoList = () => {
@@ -13,7 +13,7 @@ export const TodoList = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getTodosAction());
+        dispatch(getTodoListAction());
     }, [])
 
     const onTaskClick = (e, task) => {

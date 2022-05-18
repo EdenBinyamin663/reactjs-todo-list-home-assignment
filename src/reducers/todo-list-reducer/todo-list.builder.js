@@ -8,7 +8,7 @@ const GET_TASKS = `GET_${TASKS}`;
 const UPDATE_TASKS = `UPDATE_${TASKS}`;
 const DELETE_TASKS = `DELETE_${TASKS}`;
 
-export const getTodosAction = createAsyncThunk(`${TASKS}/${GET_TASKS}`, getTodos);
+export const getTodoListAction = createAsyncThunk(`${TASKS}/${GET_TASKS}`, getTodos);
 
 export const updateTodoAction = createAsyncThunk(`${TASKS}/${UPDATE_TASKS}`, async ({task}, {
     rejectWithValue
@@ -45,14 +45,14 @@ export const todoListBuilder = builder => {
         .addCase(deleteTodoAction.rejected, (state, {meta: {arg: {task}}}) => {
             state.tasks[task.id] = task;
         })
-        .addCase(getTodosAction.pending, state => {
+        .addCase(getTodoListAction.pending, state => {
             state.isLoading = true;
         })
-        .addCase(getTodosAction.fulfilled, (state, {payload}) => {
+        .addCase(getTodoListAction.fulfilled, (state, {payload}) => {
             state.isLoading = false;
             state.tasks = arrayToDictionaryByKey(payload, 'id');
         })
-        .addCase(getTodosAction.rejected, state => {
+        .addCase(getTodoListAction.rejected, state => {
             state.isLoading = false;
         });
 };
