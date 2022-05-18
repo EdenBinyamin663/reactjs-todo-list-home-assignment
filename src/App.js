@@ -1,7 +1,20 @@
+import './App.scss';
+import {useEffect} from 'react';
+import {TasksList} from './components/tasks-list/tasks-list';
+import {useDispatch} from 'react-redux';
+import {getTodosAction} from './reducers/tasks.builder';
+
 export default function App() {
-  return (
-    <div>
-      <h1>My List</h1>
-    </div>
-  );
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getTodosAction());
+    }, [])
+
+    return (
+        <div className='app-root'>
+            <TasksList/>
+        </div>
+    );
 }

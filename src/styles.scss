@@ -1,0 +1,17 @@
+html,
+body {
+    height: 100vh;
+    width: 100vw;
+}
+
+@media (prefers-color-scheme: dark) {
+    @import './themes/dark-theme.scss';
+}
+
+@media (prefers-color-scheme: light) {
+    @import './themes/light-theme.scss';
+}
+
+body {
+    font-family: sans-serif;
+}
